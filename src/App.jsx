@@ -1,4 +1,4 @@
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import LoginPage from './Authentication/LoginPage'
 import GlobalStyles from './styles/GlobalStyles'
 
@@ -16,12 +16,20 @@ function App() {
       desktop: "1280px"
     }
   }
+  
+  const MainWrapper = styled.main`
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+
+  `;
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-     <main>
+     <MainWrapper>
       <LoginPage/>
-     </main>
+     </MainWrapper>
     </ThemeProvider>
   )
 }
