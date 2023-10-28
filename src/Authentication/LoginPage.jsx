@@ -3,23 +3,21 @@ import LoginForm from "./LoginForm";
 
 const LoginPage = () => {
 
-    const Wrapper = styled.main`
+
+    const Wrapper = styled.section`
     height: 90%;
     width: 90%;
     border-radius: 20px;
-    /* border: 2px solid gray; */
+    padding: 15px;
     background-color: white;
     display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
     position: relative;
 
-    @media (max-width: ${({theme}) => theme.responsive.mobile}) {
+    @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
         display: flex;
         flex-direction: column;
-}
-    @media (max-width: ${({theme}) => theme.responsive.tablet}) {
-     
 }
    `;
 
@@ -33,14 +31,15 @@ const LoginPage = () => {
         width: 100%;
     };
    
-    @media (min-width: ${({theme}) => theme.responsive.mobile}) and (max-width: ${({theme}) => theme.responsive.tablet}) {
+    @media (min-width: ${({ theme }) => theme.responsive.mobile}) and (max-width: ${({ theme }) => theme.responsive.tablet}) {
 
         img{
         height: 40%;
         width: 100%;
     };
+
     }
-    @media (min-width: ${({theme}) => theme.responsive.tablet}) and (max-width: ${({theme}) => theme.responsive.laptop}) {
+    @media (min-width: ${({ theme }) => theme.responsive.tablet}) and (max-width: ${({ theme }) => theme.responsive.laptop}) {
 
         img{
         height: 50%;

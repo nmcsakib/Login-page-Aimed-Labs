@@ -1,7 +1,21 @@
 import styled from "styled-components";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 const LoginForm = () => {
-    const Form = styled.section`
+
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const toggleShowPass = () => {
+        setShowPassword(prevState => !prevState);
+    };
+
+    const stopReloading = (event) => {
+        event.preventDefault();
+       
+      };
+    // =========================== Styles ==========================
+    const Form = styled.form`
     height: 90%;
     width: 90%;
    display: flex;
@@ -32,29 +46,36 @@ const LoginForm = () => {
 `;
 
     const InputBox = styled.section`
+    position: relative;
     width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
 
+    input{
+        width: 100%;
+        outline: none;
+        border-radius: 8px;
+        border: 1px solid rgba(4, 7, 47, 0.40);
+        padding: 10px;
+}
 `;
 
 
-    const Input = styled.input`
-          width: 100%;
-          outline: none;
-            border-radius: 8px;
-            border: 1px solid rgba(4, 7, 47, 0.40);
-            padding: 10px;
-            
-            `;
+    const EyeSpan = styled.span`
+        position: absolute;
+        top: 42%;
+        right: 20px;
+        cursor: pointer;
+    `;
 
     const ChangPass = styled.a`
-        color: ${({theme}) => theme.color.secondary1};
+        color: ${({ theme }) => theme.color.secondary1};
         cursor: pointer;
         align-self: flex-end;
+
         &:active{
-            color: ${({theme}) => theme.color.secondary2};
+            color: ${({ theme }) => theme.color.secondary2};
         }
     `;
 
@@ -78,7 +99,7 @@ const LoginForm = () => {
     const LoginButton = styled.button`
       width: 50%;
       padding: 12px 10px; 
-      background-color: ${({theme}) => theme.color.primary1};
+      background-color: ${({ theme }) => theme.color.primary1};
       border: none;
       border-radius: 12px; 
       font-size: 18px;
@@ -86,28 +107,29 @@ const LoginForm = () => {
       color: #fff;
       cursor: pointer;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
       &:hover{
-        background-color: ${({theme}) => theme.color.primary2};
+        background-color: ${({ theme }) => theme.color.primary2};
         box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.16);
       }
 
       &:active{
-        background-color: ${({theme}) => theme.color.primary1};
+        background-color: ${({ theme }) => theme.color.primary1};
       }
 
-      @media (max-width: ${({theme}) => theme.responsive.mobile}) {
+      @media (max-width: ${({ theme }) => theme.responsive.mobile}) {
       
     width: 80%;
     }
     `;
 
-      const RegisterLink = styled.section`
+    const RegisterLink = styled.section`
       span{
-        color: ${({theme}) => theme.color.secondary1};
+        color: ${({ theme }) => theme.color.secondary1};
         cursor: pointer;
 
         &:active{
-            color: ${({theme}) => theme.color.secondary2};
+            color: ${({ theme }) => theme.color.secondary2};
         }
       }
       `;
@@ -115,15 +137,14 @@ const LoginForm = () => {
         <Form>
             <FormWrapper>
 
-
                 <h2>Login</h2>
                 <InputBox>
                     <label htmlFor="loginID">Login ID</label>
-                    <Input type="text" placeholder="Enter Login ID" id="loginID" />
+                    <input type="text" placeholder="Enter Login ID" id="loginID" />
                 </InputBox>
                 <InputBox>
                     <label htmlFor="Password">Password</label>
-                    <Input type="password" placeholder="Enter your password" id="Password" />
+                    <input type="password" placeholder="Enter your password" id="Password" /> <EyeSpan onClick={toggleShowPass}>{!showPassword ? <FaEye /> : <FaEyeSlash />}</EyeSpan>
                     <ChangPass>Change Password</ChangPass>
                 </InputBox>
                 <CheckBoxWrapper>
@@ -136,7 +157,7 @@ const LoginForm = () => {
                         <label htmlFor="terms&condition">Agree to <span>Terms & Conditions</span></label>
                     </CheckBox>
                 </CheckBoxWrapper>
-                <LoginButton>Login</LoginButton>
+                <LoginButton onclick={stopReloading}>Login</LoginButton>
                 <RegisterLink>Don&apos;t have any account? <span>Register now.</span></RegisterLink>
             </FormWrapper>
 
