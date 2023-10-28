@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
 body{
 background-color: ${({theme}) => theme.color.backgroundColor};
-font-family: 'Inter';
+font-family: 'Poppins', sans;
 font-weight: 500;
 }
 `;

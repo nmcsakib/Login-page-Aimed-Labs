@@ -7,7 +7,9 @@ function App() {
   const theme = {
     color: {
       backgroundColor: "#fff",
-      primary: "#0ecda0",
+      titleTextColor: "#04072F",
+      primary1: "#0ecda0",
+      primary2: "#1b9e80",
       secondary: "#e5570d"
     },
     responsive: {
@@ -16,7 +18,7 @@ function App() {
       desktop: "1280px"
     }
   }
-  
+
   const MainWrapper = styled.main`
     height: 100vh;
     width: 100vw;
