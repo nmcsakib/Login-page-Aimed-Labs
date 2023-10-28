@@ -18,6 +18,7 @@ const LoginForm = () => {
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        
 
         
     h2{
@@ -48,9 +49,13 @@ const LoginForm = () => {
             
             `;
 
-    const ChangPass = styled.span`
-        
+    const ChangPass = styled.a`
+        color: ${({theme}) => theme.color.secondary1};
+        cursor: pointer;
         align-self: flex-end;
+        &:active{
+            color: ${({theme}) => theme.color.secondary2};
+        }
     `;
 
     const CheckBoxWrapper = styled.section`
@@ -80,17 +85,32 @@ const LoginForm = () => {
       font-weight: 600;
       color: #fff;
       cursor: pointer;
-
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
       &:hover{
         background-color: ${({theme}) => theme.color.primary2};
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.16);
+        box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.16);
       }
 
       &:active{
         background-color: ${({theme}) => theme.color.primary1};
       }
+
+      @media (max-width: ${({theme}) => theme.responsive.mobile}) {
+      
+    width: 80%;
+    }
     `;
 
+      const RegisterLink = styled.section`
+      span{
+        color: ${({theme}) => theme.color.secondary1};
+        cursor: pointer;
+
+        &:active{
+            color: ${({theme}) => theme.color.secondary2};
+        }
+      }
+      `;
     return (
         <Form>
             <FormWrapper>
@@ -117,6 +137,7 @@ const LoginForm = () => {
                     </CheckBox>
                 </CheckBoxWrapper>
                 <LoginButton>Login</LoginButton>
+                <RegisterLink>Don&apos;t have any account? <span>Register now.</span></RegisterLink>
             </FormWrapper>
 
         </Form>

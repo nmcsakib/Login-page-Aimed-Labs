@@ -12,8 +12,15 @@ const LoginPage = () => {
     display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-    
-    
+    position: relative;
+
+    @media (max-width: ${({theme}) => theme.responsive.mobile}) {
+        display: flex;
+        flex-direction: column;
+}
+    @media (max-width: ${({theme}) => theme.responsive.tablet}) {
+     
+}
    `;
 
     const ImageBox = styled.aside`
@@ -22,8 +29,23 @@ const LoginPage = () => {
     display: grid;
     place-items: center;
     img{
-        height: 95%;
+        height: 100%;
         width: 100%;
+    };
+   
+    @media (min-width: ${({theme}) => theme.responsive.mobile}) and (max-width: ${({theme}) => theme.responsive.tablet}) {
+
+        img{
+        height: 40%;
+        width: 100%;
+    };
+    }
+    @media (min-width: ${({theme}) => theme.responsive.tablet}) and (max-width: ${({theme}) => theme.responsive.laptop}) {
+
+        img{
+        height: 50%;
+        width: 100%;
+    };
     }
    `;
 
@@ -33,6 +55,7 @@ const LoginPage = () => {
     border-radius: 12px;
     box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.16);
     grid-column: 2 / span 2;
+    padding: 15px 0;
 `;
     return (
         <Wrapper>
